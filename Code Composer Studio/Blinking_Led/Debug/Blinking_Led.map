@@ -1,0 +1,260 @@
+******************************************************************************
+                  TI ARM Linker PC v5.2.4                      
+******************************************************************************
+>> Linked Sun Jun 21 17:43:55 2015
+
+OUTPUT FILE NAME:   <Blinking_Led.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 00000aad
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  MAIN                  00000000   00040000  00000c40  0003f3c0  R  X
+  INFO                  00200000   00004000  00000000  00004000  R  X
+  SRAM_CODE             01000000   00010000  00000000  00010000  RW X
+  SRAM_DATA             20000000   00010000  0000022e  0000fdd2  RW  
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    00000c40   00000c40    r-x
+  00000000    00000000    00000144   00000144    r-- .intvecs
+  00000144    00000144    00000ac4   00000ac4    r-x .text
+  00000c08    00000c08    00000038   00000038    r-- .cinit
+20000000    20000000    0000002e   00000000    rw-
+  20000000    20000000    0000001c   00000000    rw- .data
+  2000001c    2000001c    00000012   00000000    rw- .bss
+2000fe00    2000fe00    00000200   00000000    rw-
+  2000fe00    2000fe00    00000200   00000000    rw- .stack
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    00000144     
+                  00000000    00000144     msp432_startup_ccs.obj (.intvecs)
+
+.text      0    00000144    00000ac4     
+                  00000144    000004c0     blink.obj (.text)
+                  00000604    00000136     rtsv7M4_T_le_v4SPD16_eabi.lib : fd_div_t2.obj (.text)
+                  0000073a    000000fc                                   : fd_mul_t2.obj (.text)
+                  00000836    0000009c                                   : memcpy_t2.obj (.text)
+                  000008d2    00000086                                   : fd_cmp_t2.obj (.text:__aeabi_cdcmple)
+                  00000958    0000007a                                   : memset_t2.obj (.text)
+                  000009d2    00000002     --HOLE-- [fill = 0]
+                  000009d4    0000006c                                   : autoinit.obj (.text)
+                  00000a40    0000006a                                   : copy_decompress_rle.obj (.text)
+                  00000aaa    00000002     --HOLE-- [fill = 0]
+                  00000aac    00000050                                   : boot.obj (.text)
+                  00000afc    0000004c                                   : cpy_tbl.obj (.text)
+                  00000b48    00000044                                   : exit.obj (.text)
+                  00000b8c    00000020                                   : u_tofd_t2.obj (.text)
+                  00000bac    00000018                                   : args_main.obj (.text)
+                  00000bc4    00000014                                   : _lock.obj (.text)
+                  00000bd8    0000000e                                   : copy_decompress_none.obj (.text:decompress:none)
+                  00000be6    0000000c                                   : copy_zero_init.obj (.text:decompress:ZI)
+                  00000bf2    0000000c     msp432_startup_ccs.obj (.text)
+                  00000bfe    00000006     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_rle.obj (.text:decompress:rle24)
+                  00000c04    00000004                                   : pre_init.obj (.text)
+
+.cinit     0    00000c08    00000038     
+                  00000c08    00000012     (.cinit..data.load) [load image, compression = rle]
+                  00000c1a    00000002     --HOLE-- [fill = 0]
+                  00000c1c    0000000c     (__TI_handler_table)
+                  00000c28    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00000c30    00000010     (__TI_cinit_table)
+
+.data      0    20000000    0000001c     UNINITIALIZED
+                  20000000    00000008     blink.obj (.data)
+                  20000008    00000008     rtsv7M4_T_le_v4SPD16_eabi.lib : _lock.obj (.data)
+                  20000010    00000008                                   : exit.obj (.data)
+                  20000018    00000004                                   : stkdepth_vars.obj (.data)
+
+.bss       0    2000001c    00000012     UNINITIALIZED
+                  2000001c    00000002     (.common:RGB1_BrightHigh)
+                  2000001e    00000002     (.common:RGB1_BrightMod)
+                  20000020    00000002     (.common:RGB1_ColorMod)
+                  20000022    00000002     (.common:RGB1_PulseHigh)
+                  20000024    00000002     (.common:RGB1_PulseWidth)
+                  20000026    00000002     (.common:RGB1_SatBlue)
+                  20000028    00000002     (.common:RGB1_SatGreen)
+                  2000002a    00000002     (.common:RGB1_SatRed)
+                  2000002c    00000002     (.common:RGB1_State)
+
+.TI.persistent 
+*          0    20000000    00000000     UNINITIALIZED
+
+.TI.noinit 
+*          0    2000001c    00000000     UNINITIALIZED
+
+.stack     0    2000fe00    00000200     UNINITIALIZED
+                  2000fe00    00000200     --HOLE--
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 00000c30 records: 2, size/record: 8, table size: 16
+	.data: load addr=00000c08, load size=00000012 bytes, run addr=20000000, run size=0000001c bytes, compression=rle
+	.bss: load addr=00000c28, load size=00000008 bytes, run addr=2000001c, run size=00000012 bytes, compression=zero_init
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 00000c1c records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_decompress_rle24
+	index: 1, handler: __TI_decompress_none
+	index: 2, handler: __TI_zero_init
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                    
+-------   ----                    
+00000b49  C$$EXIT                 
+00000499  Port1Handler            
+2000001c  RGB1_BrightHigh         
+2000001e  RGB1_BrightMod          
+20000020  RGB1_ColorMod           
+000002db  RGB1_HandleColor        
+20000022  RGB1_PulseHigh          
+20000024  RGB1_PulseWidth         
+20000026  RGB1_SatBlue            
+20000028  RGB1_SatGreen           
+2000002a  RGB1_SatRed             
+0000024d  RGB1_SetBrightness      
+00000261  RGB1_SetColor           
+0000022d  RGB1_SetPulse           
+2000002c  RGB1_State              
+UNDEFED   SHT$$INIT_ARRAY$$Base   
+UNDEFED   SHT$$INIT_ARRAY$$Limit  
+000005a5  TimerA0_0IsrHandler     
+000005b7  TimerA0_NIsrHandler     
+4000480c  WDTCTL_SYM              
+20010000  __STACK_END             
+00000200  __STACK_SIZE            
+00000c30  __TI_CINIT_Base         
+00000c40  __TI_CINIT_Limit        
+00000c1c  __TI_Handler_Table_Base 
+00000c28  __TI_Handler_Table_Limit
+000009d5  __TI_auto_init          
+20000010  __TI_cleanup_ptr        
+00000bd9  __TI_decompress_none    
+00000bff  __TI_decompress_rle24   
+20000014  __TI_dtors_ptr          
+00000000  __TI_static_base__      
+00000be7  __TI_zero_init          
+000008d3  __aeabi_cdcmpeq         
+000008d3  __aeabi_cdcmple         
+00000605  __aeabi_ddiv            
+0000073b  __aeabi_dmul            
+00000959  __aeabi_memclr          
+00000959  __aeabi_memclr4         
+00000959  __aeabi_memclr8         
+00000837  __aeabi_memcpy          
+00000837  __aeabi_memcpy4         
+00000837  __aeabi_memcpy8         
+0000095b  __aeabi_memset          
+0000095b  __aeabi_memset4         
+0000095b  __aeabi_memset8         
+00000b8d  __aeabi_ui2d            
+ffffffff  __binit__               
+ffffffff  __c_args__              
+2000fe00  __stack                 
+00000bad  _args_main              
+00000aad  _c_int00                
+20000008  _lock                   
+00000bd3  _nop                    
+00000bcb  _register_lock          
+00000bc5  _register_unlock        
+00000c05  _system_pre_init        
+2000000c  _unlock                 
+00000b4d  abort                   
+ffffffff  binit                   
+00000afd  copy_in                 
+00000b55  exit                    
+00000000  interruptVectors        
+00000145  main                    
+20000018  main_func_sp            
+00000837  memcpy                  
+00000961  memset                  
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                    
+-------   ----                    
+00000000  __TI_static_base__      
+00000000  interruptVectors        
+00000145  main                    
+00000200  __STACK_SIZE            
+0000022d  RGB1_SetPulse           
+0000024d  RGB1_SetBrightness      
+00000261  RGB1_SetColor           
+000002db  RGB1_HandleColor        
+00000499  Port1Handler            
+000005a5  TimerA0_0IsrHandler     
+000005b7  TimerA0_NIsrHandler     
+00000605  __aeabi_ddiv            
+0000073b  __aeabi_dmul            
+00000837  __aeabi_memcpy          
+00000837  __aeabi_memcpy4         
+00000837  __aeabi_memcpy8         
+00000837  memcpy                  
+000008d3  __aeabi_cdcmpeq         
+000008d3  __aeabi_cdcmple         
+00000959  __aeabi_memclr          
+00000959  __aeabi_memclr4         
+00000959  __aeabi_memclr8         
+0000095b  __aeabi_memset          
+0000095b  __aeabi_memset4         
+0000095b  __aeabi_memset8         
+00000961  memset                  
+000009d5  __TI_auto_init          
+00000aad  _c_int00                
+00000afd  copy_in                 
+00000b49  C$$EXIT                 
+00000b4d  abort                   
+00000b55  exit                    
+00000b8d  __aeabi_ui2d            
+00000bad  _args_main              
+00000bc5  _register_unlock        
+00000bcb  _register_lock          
+00000bd3  _nop                    
+00000bd9  __TI_decompress_none    
+00000be7  __TI_zero_init          
+00000bff  __TI_decompress_rle24   
+00000c05  _system_pre_init        
+00000c1c  __TI_Handler_Table_Base 
+00000c28  __TI_Handler_Table_Limit
+00000c30  __TI_CINIT_Base         
+00000c40  __TI_CINIT_Limit        
+20000008  _lock                   
+2000000c  _unlock                 
+20000010  __TI_cleanup_ptr        
+20000014  __TI_dtors_ptr          
+20000018  main_func_sp            
+2000001c  RGB1_BrightHigh         
+2000001e  RGB1_BrightMod          
+20000020  RGB1_ColorMod           
+20000022  RGB1_PulseHigh          
+20000024  RGB1_PulseWidth         
+20000026  RGB1_SatBlue            
+20000028  RGB1_SatGreen           
+2000002a  RGB1_SatRed             
+2000002c  RGB1_State              
+2000fe00  __stack                 
+20010000  __STACK_END             
+4000480c  WDTCTL_SYM              
+ffffffff  __binit__               
+ffffffff  __c_args__              
+ffffffff  binit                   
+UNDEFED   SHT$$INIT_ARRAY$$Base   
+UNDEFED   SHT$$INIT_ARRAY$$Limit  
+
+[67 symbols]
