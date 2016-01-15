@@ -1,0 +1,1 @@
+These datasheet might be outdated now, you should always check the latest one on Texas Instrument website

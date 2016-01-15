@@ -1,0 +1,3 @@
+Usefull website
+- TI Launchpad community : https://www.hackster.io/ti-launchpad
+- LaunchPad MSP432 RTOS for Everyone : http://embeddedcomputing.weebly.com/launchpad-msp432-rtos-for-everyone.html
