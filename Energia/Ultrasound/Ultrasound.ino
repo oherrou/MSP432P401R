@@ -30,14 +30,14 @@ void setup()
   pinMode(pinYellowLed, OUTPUT);
 }
 
-void loop() {
-  int iDistance = ultrasonDistance();
-
+void loop()
+{
+  int iDistance = ultrasonDistance();  
   
   if (iDistance >= 300 || iDistance <= 0)
   {
     bIsInRange = 0;
-    Serial.println("0");
+    Serial.println("#");
   }
   else 
   {
@@ -45,7 +45,6 @@ void loop() {
     Serial.println(iDistance);
   }
   
-  // Affichage
   if(bIsInRange == 1  && bPrevious == 0)
   {
     bPrevious = bIsInRange;
@@ -58,7 +57,7 @@ void loop() {
     digitalWrite(pinRedLed,HIGH); 
     digitalWrite(pinYellowLed,LOW);
   }
-  delay(100);  
+  delay(300);  
 }
 
 
@@ -72,13 +71,13 @@ int ultrasonDistance()
 {
   int iDistance = 0, iDuration = 0;
   digitalWrite(pinTrig, LOW); 
-  delayMicroseconds(2); 
+  delayMicroseconds(3); 
   digitalWrite(pinTrig, HIGH);
-  delayMicroseconds(10);
+  delayMicroseconds(15);
   digitalWrite(pinTrig, LOW);
 
-  iDuration = pulseIn(pinEcho, HIGH,2000);
-  iDistance = iDuration *0.034/2;
- //iDistance = (duration/2) / 29.1;
+  iDuration = pulseIn(pinEcho, HIGH);
+  //iDistance = iDuration *0.034/2;
+  iDistance = (iDuration/2) / 29.1;
   return iDistance;
 }
