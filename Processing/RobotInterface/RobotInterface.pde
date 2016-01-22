@@ -91,8 +91,8 @@ void setup()
   size(800, 600, OPENGL); // Don't change size !
   portAndroid = new Serial(this, "COM9", 9600);
   portAndroid.bufferUntil('|');
-  portMSP = new Serial(this, "COM5", 9600);
-  portMSP.bufferUntil('|');
+ // portMSP = new Serial(this, "COM5", 9600);
+  //portMSP.bufferUntil('|');
   imgRobot       = loadImage("robot.png");
   imgArrowRight  = loadImage("arrow_right.png");
   imgArrowLeft   = loadImage("arrow_left.png");
@@ -113,18 +113,18 @@ void draw()
   // Android landscape Roll => directionVert, Pitch directionHor
   if(bAndroidMod) // Android controls the robot
   {
-    if(iRoll > -30) szDirectionVert = "Forward";
-    else if(iRoll < -50) szDirectionVert = "Backward";
-    else szDirectionVert ="";
-    if(iPitch > 10) szDirectionHor = "Right";
-    else if(iPitch < -10) szDirectionHor = "Left";
+    if(iRoll > 15) szDirectionHor = "Right"; 
+    else if(iRoll < -15) szDirectionHor = "Left"; 
     else szDirectionHor = "";
+    if(iPitch < -50) szDirectionVert = "Backward";
+    else if(iPitch > -20) szDirectionVert = "Forward";
+    else szDirectionVert ="";
     hint(ENABLE_DEPTH_TEST); 
     drawPhoneOrientation();
     hint(DISABLE_DEPTH_TEST);
   }
   
-  updateMSPLeds();
+  //updateMSPLeds();
 }
 
 
@@ -179,7 +179,7 @@ void updateOrientation(String szValues)
    iCurrentValue = -1*int(szCurrentValue);
    if( ((iRoll - iTolerance) > (-1*iCurrentValue)) || ((-1*iCurrentValue) > (iRoll + iTolerance)) )
    {
-      iRoll = iCurrentValue;
+      iRoll = -iCurrentValue;
    }
    
    //Pitch
@@ -189,7 +189,7 @@ void updateOrientation(String szValues)
    iCurrentValue = int(szCurrentValue);
    if( ((iPitch - iTolerance) > iCurrentValue) || (iCurrentValue > (iPitch + iTolerance)) )
    {
-      iPitch = -iCurrentValue;
+      iPitch = iCurrentValue;
    }
    
    //Azimuth
@@ -285,8 +285,8 @@ void drawPhoneOrientation()
 {
   pushMatrix();
   translate(width/2, height/2, 0);
-  rotateZ(radians(iPitch));
-  rotateX(radians(iRoll));
+  rotateZ(radians(iRoll));
+  rotateX(radians(iPitch));
   noStroke();
   fill(48,29,14);
   box(100,5,40); //Phone case
