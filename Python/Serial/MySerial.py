@@ -1,5 +1,6 @@
 import serial
 import struct
+import sys
 from MyPrint import printMessage
 from MyPrint import printError
 from MyPrint import printPrefix
