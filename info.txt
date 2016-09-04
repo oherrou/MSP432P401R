@@ -1,4 +1,6 @@
-Code Composer Studio : 
+Windows 10 64-bits
+
+Code Composer Studio 6.1.3 : 
  -  http://www.ti.com/tool/ccstudio
 
 Energia : 
@@ -10,3 +12,9 @@ Hyperterminal :
 
 Processing : 
  - https://processing.org/download/
+
+Python3.4.3:
+ - https://www.python.org/downloads/
+
+Hardware:
+ - MSP432P401R rev B (Black launchpad)

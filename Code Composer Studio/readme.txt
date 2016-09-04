@@ -1,1 +1,2 @@
-This folder will store the projects i made using Code Composer Studio Version 6.
+Code Composer Studio V6.1.3
+
